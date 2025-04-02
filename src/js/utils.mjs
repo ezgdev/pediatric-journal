@@ -21,6 +21,7 @@ export async function loadHeaderFooter() {
     initializeMenuToggle();
 }
 
+// This function initializes the menu toggle functionality
 export function initializeMenuToggle() {
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');

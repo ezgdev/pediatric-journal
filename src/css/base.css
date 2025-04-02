@@ -80,6 +80,10 @@ nav {
     font-weight: 600;
 }
 
+.open a {
+    display: block;
+}
+
 #main-footer {
 	background-color: var(--accent2-color);
 	display: flex;

@@ -71,7 +71,9 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
 
     document.getElementById('card-container').appendChild(card);
 
-    // Reset the form fields
+    // Show the card container after adding a new entry
+    document.getElementById('card-container').classList.add('show');
+
     document.getElementById('date').value = '';
     document.getElementById('years2').value = '';
     document.getElementById('months2').value = '';
@@ -93,7 +95,7 @@ if (storedData) {
     });
 
     const visitRecords = JSON.parse(storedData);
-    visitRecords.forEach((record) => {
+    visitRecords.forEach((entry) => {
         cardContainer.classList.add('show');
         const card = document.createElement('div');
         card.className = 'card-entry';
@@ -121,7 +123,7 @@ if (storedData) {
             card.remove();
 
             // Remove the entry from local storage
-            const index = entries.findIndex((e) => {
+            const index = visitRecords.findIndex((e) => {
                 return (
                     e.date === entry.date &&
                     e.years2 === entry.years2 &&
@@ -132,8 +134,8 @@ if (storedData) {
                 );
             });
             if (index !== -1) {
-                entries.splice(index, 1);
-                localStorage.setItem('entries', JSON.stringify(entries));
+                visitRecords.splice(index, 1);
+                localStorage.setItem('visitRecords', JSON.stringify(visitRecords));
             }
         });
 

@@ -14,7 +14,73 @@
 <body>
     <header id="main-header"></header>
     <main>
+        <div class="banner">
+            <picture>
+                <source srcset="images/banner-2.webp" media="(min-width: 1024px)">
+                <source srcset="images/banner-2.webp" media="(min-width: 768px)">
+                <img src="images/banner-1.webp" alt="banner" loading="lazy">
+            </picture>
+        </div>
 
+        <div class="divForm">
+            <h2>Complete with your child's information</h2>
+            <form method="get" id="myForm">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="Type here" required>
+
+                <label for="name">Gender</label>
+                <div class="radio">
+                    <label><input type="radio" name="gender" id="boy" required>Boy</label>
+                    <label><input type="radio" name="gender" id="girl" required>Girl</label>
+                </div>
+
+                <label for="name">Weight</label>
+                <input type="number" name="weight" min="0" id="weight" placeholder="Kg" step="0.1" required>
+
+                <label for="name">Height</label>
+                <input type="number" name="height" min="0" id="height" placeholder="Cm" required>
+
+                <label for="name">Age (years)</label>
+                <input type="number" name="years" min="0" max="17" id="years"
+                    placeholder=" If less than a year old, enter zero" required>
+
+                <label for="name">Age (months)</label>
+                <input type="number" name="months" min="0" max="11" id="months" placeholder="Months" required>
+
+                <div>
+                    <input type="submit" value="Start now" class="button">
+                </div>
+            </form>
+        </div>
+
+        <div class="div3">
+            <h2>Why use our pediatric journal?</h2>
+            <div class="section-container">
+                <section>
+                    <h3>Easy to use</h3>
+                    <p>Intuitive interface<br>for everyone</p>
+                    <img class="ico" src="images/easy.webp" alt="easy tu use ico" loading="lazy">
+                </section>
+
+                <section>
+                    <h3>Vaccination</h3>
+                    <p>Never miss an appointment</p>
+                    <img class="ico" src="images/reminder.webp" alt="reminder ico" loading="lazy">
+                </section>
+
+                <section>
+                    <h3>Medical History</h3>
+                    <p>All information<br>in one place</p>
+                    <img class="ico" src="images/record.webp" alt="record ico" loading="lazy">
+                </section>
+
+                <section>
+                    <h3>Health Tips</h3>
+                    <p>Receive recommendations</p>
+                    <img class="ico" src="images/tips.webp" alt="tips ico" loading="lazy">
+                </section>
+            </div>
+        </div>
     </main>
     <footer id="main-footer"></footer>
 </body>

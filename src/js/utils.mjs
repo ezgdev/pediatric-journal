@@ -1,14 +1,17 @@
+// rendering templates and loading header/footer
 export function renderWithTemplate(template, parentElement, data, callback) {
     parentElement.insertAdjacentHTML("afterbegin", template);
     callback && callback(data);
 }
 
+// loads a template from a given path and returns it as a string
 export async function loadTemplate(path) {
     const response = await fetch(path);
     const template = await response.text();
     return template;
 }
 
+// loads a template from a given path and renders it to the given parent element
 export async function loadHeaderFooter() {
     const headerTemplate = await loadTemplate("../partials/header.html");
     const footerTemplate = await loadTemplate("../partials/footer.html");
@@ -19,9 +22,10 @@ export async function loadHeaderFooter() {
     renderWithTemplate(footerTemplate, footerElement);
 
     initializeMenuToggle();
+    addFooterContent();
 }
 
-// This function initializes the menu toggle functionality
+// initializes the menu toggle functionality
 export function initializeMenuToggle() {
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');
@@ -29,5 +33,37 @@ export function initializeMenuToggle() {
     hamButton.addEventListener('click', () => {
         navigation.classList.toggle('open');
         hamButton.classList.toggle('open');
+    });
+}
+
+// adds the current year to the footer
+export function addFooterContent() {
+    const year = new Date().getFullYear();
+    const copyrightText = `&copy; ${year} Ezequiel Gimenez - Rosario, Argentina.`;
+    const footerElement = document.getElementById('main-footer');
+    footerElement.innerHTML = copyrightText;
+}
+
+// handles the form submission and saves data to local storage
+export function handleFormSubmission() {
+    document.getElementById('myForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        //get form data
+        const name = document.getElementById('name').value;
+        const weight = document.getElementById('weight').value;
+        const height = document.getElementById('height').value;
+        const years = document.getElementById('years').value;
+        const months = document.getElementById('months').value;
+
+        //save information in localstorage
+        localStorage.setItem('name', name);
+        localStorage.setItem('weight', weight);
+        localStorage.setItem('height', height);
+        localStorage.setItem('years', years);
+        localStorage.setItem('months', months);
+
+        //redirect to destination page
+        window.location.href = 'journal.html';
     });
 }

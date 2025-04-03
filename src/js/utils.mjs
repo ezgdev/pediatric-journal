@@ -64,6 +64,6 @@ export function handleFormSubmission() {
         localStorage.setItem('months', months);
 
         //redirect to destination page
-        window.location.href = 'journal.html';
+        window.location.href = '/visit-record.html';
     });
 }

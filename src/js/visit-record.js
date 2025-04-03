@@ -84,6 +84,8 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
 
 // Load existing entries from local storage and display them
 const storedData = localStorage.getItem('visitRecords');
+let visitRecords = storedData ? JSON.parse(storedData) : []; // Initialize visitRecords here
+
 if (storedData) {
 
     // Show container when entry added
@@ -94,7 +96,6 @@ if (storedData) {
         cardContainer.classList.toggle('show');
     });
 
-    const visitRecords = JSON.parse(storedData);
     visitRecords.forEach((entry) => {
         cardContainer.classList.add('show');
         const card = document.createElement('div');
@@ -135,7 +136,7 @@ if (storedData) {
             });
             if (index !== -1) {
                 visitRecords.splice(index, 1);
-                localStorage.setItem('visitRecords', JSON.stringify(visitRecords));
+                localStorage.setItem('visitRecords', JSON.stringify(visitRecords)); // Update local storage
             }
         });
 

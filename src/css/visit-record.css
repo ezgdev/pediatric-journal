@@ -169,9 +169,15 @@ textarea::placeholder {
 }
 
 .card-entry {
+    max-width: 800px;
+    max-height: 500px;
+    overflow-y: auto;
     overflow-wrap: break-word;
     word-wrap: break-word;
-    word-break: break-all;
+}
+
+.card-entry::-webkit-scrollbar {
+    width: 8px;
 }
 
 .card-content {

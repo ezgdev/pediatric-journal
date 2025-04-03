@@ -8,6 +8,7 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
     // Get entry form data
     const formData = {
         date: document.getElementById('date').value,
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         years2: document.getElementById('years2').value,
         months2: document.getElementById('months2').value,
         weight2: document.getElementById('weight2').value,
@@ -32,11 +33,16 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
     const cardContent = document.createElement('div');
     cardContent.className = 'card-content';
 
+    function formatDate(dateString) {
+        const [year, month, day] = dateString.split('-');
+        return `${month}-${day}-${year}`;
+    }
+
     const cardText = `
-        <p><strong>Date:</strong> ${formData.date}</p>
+        <p><strong>Date:</strong> ${formatDate(formData.date)}, ${formData.time} hs</p>
         <p><strong>Age:</strong> ${formData.years2} years and ${formData.months2} months</p>
-        <p><strong>Weight:</strong> ${formData.weight2}</p>
-        <p><strong>Height:</strong> ${formData.height2}</p>
+        <p><strong>Weight:</strong> ${formData.weight2} kg</p>
+        <p><strong>Height:</strong> ${formData.height2} cm</p>
         <p><strong>Indications:</strong> ${formData.indications}</p>
         `;
     
@@ -105,10 +111,10 @@ if (storedData) {
         cardContent.className = 'card-content';
 
         const cardText = `
-        <p><strong>Date:</strong> ${entry.date}</p>
+        <p><strong>Date:</strong> ${entry.date}, ${entry.time} hs</p>
         <p><strong>Age:</strong> ${entry.years2} years and ${entry.months2} months</p>
-        <p><strong>Weight:</strong> ${entry.weight2}</p>
-        <p><strong>Height:</strong> ${entry.height2}</p>
+        <p><strong>Weight:</strong> ${entry.weight2} kg</p>
+        <p><strong>Height:</strong> ${entry.height2} cm</p>
         <p><strong>Indications:</strong> ${entry.indications}</p>
         `;
 

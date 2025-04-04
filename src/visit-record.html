@@ -9,8 +9,16 @@
         content="Record your visit to the pediatrician and note important information. Also, add a reminder!">
     <meta name="author" content="Ezequiel Gimenez">
     <link rel="stylesheet" href="css/visit-record.css">
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <!-- API de Google Identity Services (OAuth 2.0) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+
     <script src="js/visit-record.js" type="module" defer></script>
     <script src="js/showData.js" type="module" defer></script>
+    <script src="js/calendarApi.js" type="module" defer></script>
+
 </head>
 
 <body>
@@ -30,6 +38,27 @@
                 <p><span id="bmi"></span></p>
             </div>
             <img src="images/koala.webp" alt="panda image decoration" loading="lazy">
+        </div>
+
+        <div>
+            <h2>Add Reminder</h2>
+
+            <button id="loginButton" onclick="authenticate()">Login with Google</button>
+            <button id="logoutButton" onclick="signOut()" style="display: none;">Logout</button>
+
+            <br><br>
+
+            <label for="eventTitle">Title:</label>
+            <input type="text" id="eventTitle" placeholder="Ej. Cita con el pediatra">
+
+            <br>
+
+            <label for="eventDate">Date and time:</label>
+            <input type="datetime-local" id="eventDate">
+
+            <br>
+
+            <button onclick="addEvent()">Add to Google Calendar</button>
         </div>
 
         <div class="log-container" id="entryForm">
@@ -64,3 +93,5 @@
     <footer id="main-footer"></footer>
 
 </body>
+
+</html>

@@ -11,10 +11,7 @@
     <link rel="stylesheet" href="css/visit-record.css">
 
     <script src="https://apis.google.com/js/api.js"></script>
-    <!-- API de Google Identity Services (OAuth 2.0) -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-
     <script src="js/visit-record.js" type="module" defer></script>
     <script src="js/showData.js" type="module" defer></script>
     <script src="js/calendarApi.js" type="module" defer></script>
@@ -43,20 +40,20 @@
         <div>
             <h2>Add Reminder</h2>
 
-            <button id="loginButton" onclick="authenticate()">Login with Google</button>
-            <button id="logoutButton" onclick="signOut()" style="display: none;">Logout</button>
+            <button id="loginButton" onclick="authenticate()">Sign in with Google</button>
+            <button id="logoutButton" onclick="signOut()" style="display: none;">Log Out</button>
 
-            <br><br>
+            <br>
 
             <label for="eventTitle">Title:</label>
-            <input type="text" id="eventTitle" placeholder="Ej. Cita con el pediatra">
+            <input type="text" id="eventTitle" placeholder="Ej.: Pediatric visit" required>
 
             <br>
 
             <label for="eventDate">Date and time:</label>
-            <input type="datetime-local" id="eventDate">
+            <input type="datetime-local" id="eventDate" required>
 
-            <br>
+            <br><br>
 
             <button onclick="addEvent()">Add to Google Calendar</button>
         </div>

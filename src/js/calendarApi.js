@@ -114,11 +114,17 @@ window.addEvent = function () {
         end: { dateTime: new Date(new Date(eventDate).getTime() + 60 * 60 * 1000).toISOString(), timeZone: "America/Argentina/Buenos_Aires" }
     };
 
+    const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    event.start.timeZone = userTimeZone;
+    event.end.timeZone = userTimeZone;
+
     gapi.client.calendar.events.insert({
         calendarId: "primary",
         resource: event
     }).then(response => {
         alert("Event added to Google Calendar");
+        document.getElementById("eventTitle").value = "";
+        document.getElementById("eventDate").value = "";
         console.log("Event created:", response);
     }).catch(error => {
         console.error("Error adding event:", error);

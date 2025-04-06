@@ -25,6 +25,7 @@ img {
     padding: 20px;
     width: 100%;
     border-radius: 8px;
+    align-content: center;
 }
 
 .divForm label {
@@ -78,19 +79,12 @@ input:valid {
 }
 
 .button {
-    background-color: var(--tertiary-color);
+    background-color: var(--accent1-color);
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
     border-radius: 8px;
     margin-bottom: 0;
-}
-
-.button:hover {
-    background-color: var(--accent2-color);
-    color: white;
-    transition: background-color 0.4s ease;
-    cursor: pointer;
 }
 
 .div3 {
@@ -223,6 +217,25 @@ input::placeholder {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
+    .banner h1:hover {
+        animation: hoverEffect 0.5s ease-in-out;
+    }
+
+    @keyframes hoverEffect {
+        0% {
+            transform: scale(1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        50% {
+            transform: scale(1.1);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        100% {
+            transform: scale(1);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    }
+
     #home-section {
         display: flex;
         background-color: var(--secondary-color);;
@@ -269,14 +282,12 @@ input::placeholder {
         border-radius: inherit;
         background: linear-gradient(
             82.3deg,
-            /* rgba(152, 251, 152, 1) 10.8%,
-            rgba(152, 251, 152, 1) 94.3% */
-            
             rgba(255, 255, 255, 1) 10.8%,
             rgba(255, 255, 255, 1) 94.3%
         );
         transition: all 0.475s;
     }
+    /* End Style button get started */
 
     .divForm {
         grid-column: 4/5;
@@ -337,4 +348,11 @@ input::placeholder {
     input {
         margin-bottom: 20px;
     }
+
+    .button:hover {
+        background-color: var(--tertiary-color);
+        transition: background-color 0.3s ease-in-out;
+        cursor: pointer;     
+    }
+    
 }

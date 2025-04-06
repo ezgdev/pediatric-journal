@@ -9,6 +9,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         record: resolve(__dirname, "src/visit-record.html"),
+        vaccination: resolve(__dirname, "src/vaccination.html"),
       },
     },
   },

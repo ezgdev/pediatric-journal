@@ -67,3 +67,11 @@ export function handleFormSubmission() {
         window.location.href = '/visit-record.html';
     });
 }
+
+
+export function loadHomeSection() {
+    document.getElementById("startBtn").addEventListener("click", function () {
+        document.getElementById("home-section").style.display = "none";
+        document.getElementById("form-section").style.display = "block";
+    });
+}

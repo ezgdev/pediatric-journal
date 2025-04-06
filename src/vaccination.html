@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccination</title>
+    <meta name="description" content="Pediatric journal to keep track of your children's health and growth">
+    <meta name="author" content="Ezequiel Gimenez">
+    <link rel="stylesheet" href="css/vaccination.css">
+    <script src="js/main.js" type="module" defer></script>
+    <script src="js/vaccination.js" type="module" defer></script>
+</head>
+
+<body>
+    <header id="main-header"></header>
+    <main>
+        <div class="banner">
+            <img src="images/vaccination.webp" alt="vaccination schedule" loading="lazy">
+        </div>
+
+        <div class="filter-cards-container">
+            <h2 class="title">Select the period</h2>
+            <section>
+                <div class="filter-card" data-period="0">
+                    <img src="images/baby-stroller.webp" alt="baby stroller" loading="lazy">
+                    <h2>Newborn</h2>
+                </div>
+
+                <div class="filter-card" data-period="2">
+                    <img src="images/pacifier.webp" alt="pacifier" loading="lazy">
+                    <h2>2 months</h2>
+                </div>
+
+                <div class="filter-card" data-period="3">
+                    <img src="images/feeding-bottle.webp" alt="feeding bottle" loading="lazy">
+                    <h2>3 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="4">
+                    <img src="images/teddy-bear.webp" alt="teddy bear" loading="lazy">
+                    <h2>4 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="5">
+                    <img src="images/diaper.webp" alt="diaper" loading="lazy">
+                    <h2>5 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="6">
+                    <img src="images/socks.webp" alt="baby socks" loading="lazy">
+                    <h2>6 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="12">
+                    <img src="images/blocks.webp" alt="baby blocks" loading="lazy">
+                    <h2>12 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="15-18">
+                    <img src="images/horse.webp" alt="baby toy horse" loading="lazy">
+                    <h2>15-18 Months</h2>
+                </div>
+
+                <div class="filter-card" data-period="5-6">
+                    <img src="images/bike.webp" alt="kids bike" loading="lazy">
+                    <h2>5-6 Years</h2>
+                </div>
+
+                <div class="filter-card" data-period="11">
+                    <img src="images/headphones.webp" alt="headphones" loading="lazy">
+                    <h2>11 Years</h2>
+                </div>
+            </section>
+        </div>
+
+        <h3 class="hidden">Vaccines for the selected period</h3>
+        <div class="vaccines-container"></div>
+
+    </main>
+    <footer id="main-footer"></footer>
+</body>
+
+</html>

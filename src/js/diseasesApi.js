@@ -1,48 +1,48 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const select = document.getElementById("diseaseSelect");
-    const customDiv = document.getElementById("customInputDiv");
-    const customInput = document.getElementById("customDiseaseInput");
-    const button = document.getElementById("getInfoBtn");
-    const resultDiv = document.getElementById("result");
+const API_KEY = 'AIzaSyDAa_w9vNxzPwNKIfkfoszEyaQeQnCjVqE';
+const CX = 'f733c27ef05d141e5';
 
-    select.addEventListener("change", () => {
-        customDiv.style.display = select.value === "other" ? "block" : "none";
-    });
+const select = document.getElementById('diseaseSelect');
+const customInputDiv = document.getElementById('customInputDiv');
+const customInput = document.getElementById('customDiseaseInput');
+const getInfoBtn = document.getElementById('getInfoBtn');
+const resultContainer = document.getElementById('result');
 
-    button.addEventListener("click", async () => {
-        let disease = select.value;
-        if (disease === "other") {
-            disease = customInput.value.trim();
-        }
+select.addEventListener('change', () => {
+    if (select.value === 'other') {
+        customInputDiv.style.display = 'block';
+    } else {
+        customInputDiv.style.display = 'none';
+    }
+});
 
-        if (!disease) {
-            resultDiv.innerHTML = `<p>Please select or enter a disease.</p>`;
-            return;
-        }
+getInfoBtn.addEventListener('click', () => {
+    const query = select.value === 'other' ? customInput.value.trim() : select.value;
 
-        const Url = ``;
+    if (!query) {
+        resultContainer.innerHTML = '<p>Please select or enter a disease name.</p>';
+        return;
+    }
 
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            if (!data || data.length === 0) {
-                resultDiv.innerHTML = `<p>No information found for "${disease}".</p>`;
+    fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${CX}&key=${API_KEY}`)
+        .then(res => res.json())
+        .then(data => {
+            const resultados = data.items;
+            if (!resultados || resultados.length === 0) {
+                resultContainer.innerHTML = '<p>No results found.</p>';
                 return;
             }
 
-            const entry = data[0];
+            const html = resultados.map(r => `
+            <div class="result-card">
+            <h3><a href="${r.link}" target="_blank">${r.title}</a></h3>
+            <p>${r.snippet}</p>
+            </div>
+        `).join('');
 
-            resultDiv.innerHTML = `
-                <h2>${entry.name}</h2>
-                <p><strong>Also known as:</strong> ${entry.also_known_as}</p>
-                <p><strong>Symptoms:</strong> ${entry.symptoms}</p>
-                <p><strong>Causes:</strong> ${entry.causes}</p>
-                <p><strong>Treatments:</strong> ${entry.treatments}</p>
-            `;
-        } catch (error) {
-            console.log(error);
-            resultDiv.innerHTML = "<p>Error fetching data.</p>";
-        }
-    });
+            resultContainer.innerHTML = html;
+        })
+        .catch(err => {
+            console.error(err);
+            resultContainer.innerHTML = '<p>Error retrieving disease information.</p>';
+        });
 });

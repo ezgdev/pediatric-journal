@@ -1,3 +1,7 @@
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
 const API_KEY = 'AIzaSyDAa_w9vNxzPwNKIfkfoszEyaQeQnCjVqE';
 const CX = 'f733c27ef05d141e5';
 

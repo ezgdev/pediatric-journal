@@ -1,3 +1,7 @@
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
 document.addEventListener('DOMContentLoaded', () => {
     const periodCards = document.querySelectorAll('.filter-cards-container .filter-card');
     const vaccinesContainer = document.querySelector('.vaccines-container');

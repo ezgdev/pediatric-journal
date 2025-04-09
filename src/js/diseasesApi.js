@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const apiUrl = `/.netlify/functions/diseases?query=${encodeURIComponent(disease)}`;
+        const Url = ``;
 
         try {
             const response = await fetch(apiUrl);

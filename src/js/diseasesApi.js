@@ -23,7 +23,7 @@ getInfoBtn.addEventListener('click', () => {
         return;
     }
 
-    fetch(`https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(query)}&cx=${CX}&key=${API_KEY}`)
+    fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${CX}&key=${API_KEY}`)
         .then(res => res.json())
         .then(data => {
             const resultados = data.items;

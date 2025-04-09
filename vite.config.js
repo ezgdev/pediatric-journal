@@ -4,12 +4,13 @@ const { defineConfig } = require("vite");
 export default defineConfig({
   root: 'src',
   build: {
-    outDir: '../dist', // Establecer la carpeta de salida en el directorio raíz
+    outDir: '../dist',
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
         record: resolve(__dirname, "src/visit-record.html"),
         vaccination: resolve(__dirname, "src/vaccination.html"),
+        diseases: resolve(__dirname, "src/diseases.html"),
       },
     },
   },

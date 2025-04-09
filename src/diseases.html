@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Diseases Info</title>
+    <meta name="description" content="Pediatric journal to keep track of your children's health and growth">
+    <meta name="author" content="Ezequiel Gimenez">
+    <link rel="stylesheet" href="css/diseases.css">
+    <script src="js/main.js" type="module" defer></script>
+    <script src="js/diseasesApi.js" type="module" defer></script>
+</head>
+
+<body>
+    <header id="main-header"></header>
+    <main>
+        <div class="banner">
+            <img src="images/health.webp" alt="health information" loading="lazy">
+        </div>
+
+        <div class="container-diseases">
+            <h1 class="title">Child Diseases Info</h1>
+
+            <label for="diseaseSelect">Common Childhood Diseases:</label>
+
+            <select id="diseaseSelect">
+                <option value="">--Select a disease--</option>
+                <option value="flu">Flu</option>
+                <option value="chickenpox">Chickenpox</option>
+                <option value="bronchitis">Bronchitis</option>
+                <option value="asthma">Asthma</option>
+                <option value="hand footmouth">Hand, Foot, and Mouth Disease</option>
+                <option value="common cold">Common Cold</option>
+                <option value="pneumonia">Pneumonia</option>
+                <option value="strep throat">Strep Throat</option>
+                <option value="ear infection">Ear Infection</option>
+                <option value="gastroenteritis">Gastroenteritis</option>
+                <option value="allergies">Allergies</option>
+                <option value="other">Other...</option>
+            </select>
+
+            <div id="customInputDiv" style="display: none;">
+                <input type="text" id="customDiseaseInput" placeholder="Enter disease name...">
+            </div>
+
+            <button id="getInfoBtn">Get Disease Info</button>
+
+            <div id="result" class="card"></div>
+        </div>
+    </main>
+
+    <footer id="main-footer"></footer>
+
+</body>
+
+</html>

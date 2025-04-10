@@ -26,36 +26,39 @@
             <img src="images/deco.webp" alt="banner for decoration" loading="lazy">
         </div>
 
-        <div class="card">
-            <div class="card-welcome">
-                <h2>Welcome <span id="name"></span> !</h2>
-                <p><span id="weight"></span></p>
-                <p><span id="height"></span></p>
-                <p><span id="age"></span></p>
-                <p><span id="bmi"></span></p>
+        <div class="container-card-reminder">
+            <div class="card">
+                <div class="card-welcome">
+                    <h2>Welcome <span id="name"></span> !</h2>
+                    <p><span id="weight"></span></p>
+                    <p><span id="height"></span></p>
+                    <p><span id="age"></span></p>
+                    <p><span id="bmi"></span></p>
+                </div>
+                <img src="images/koala.webp" alt="panda image decoration" loading="lazy">
             </div>
-            <img src="images/koala.webp" alt="panda image decoration" loading="lazy">
+
+            <div id="reminderForm">
+                <h2>Want to add a reminder for your next visit? Sign In with your Google account and do it!</h2>
+
+                <button id="loginButton" onclick="authenticate()"><img src="images/google.png" alt="google ico"
+                        width="15px" height="15px"> Sign In with Google</button>
+                <button id="logoutButton" onclick="signOut()" style="display: none;"> <img src="images/google.png"
+                        alt="google ico" width="15px" height="15px">Log Out</button>
+
+                <br>
+
+                <label for="eventTitle">Reminder</label>
+                <input type="text" id="eventTitle" placeholder="Ej.: Pediatric visit" required>
+
+                <label for="eventDate">Date and time</label>
+                <input type="datetime-local" id="eventDate" required>
+
+                <button id="addCalendar" onclick="addEvent()"> <img src="images/google-calendar.png"
+                        alt="google calendar" width="15px" height="15px">Add to Google Calendar</button>
+            </div>
         </div>
 
-        <div id="reminderForm">
-            <h2>Want to add a reminder for your next visit? Sign In with your Google account and do it!</h2>
-
-            <button id="loginButton" onclick="authenticate()"><img src="images/google.png" alt="google ico" width="15px"
-                    height="15px"> Sign In with Google</button>
-            <button id="logoutButton" onclick="signOut()" style="display: none;"> <img src="images/google.png"
-                    alt="google ico" width="15px" height="15px">Log Out</button>
-
-            <br>
-
-            <label for="eventTitle">Reminder</label>
-            <input type="text" id="eventTitle" placeholder="Ej.: Pediatric visit" required>
-
-            <label for="eventDate">Date and time</label>
-            <input type="datetime-local" id="eventDate" required>
-
-            <button id="addCalendar" onclick="addEvent()"> <img src="images/google-calendar.png" alt="google calendar"
-                    width="15px" height="15px">Add to Google Calendar</button>
-        </div>
 
         <div class="log-container" id="entryForm">
             <h2>Pediatric Visit Log</h2>
@@ -72,7 +75,8 @@
 
                 <label><img src="images/pediatrician.png" alt="google ico" width="20px" height="20px">
                     Pediatrician</label>
-                <input type="text" id="pediatricianName" name="pediatricianName" placeholder=" Type name here" required>
+                <input type="text" id="pediatricianName" name="pediatricianName" placeholder=" Type name here"
+                    pattern="^[^\d]+$" required>
 
                 <label><img src="images/notes.png" alt="google ico" width="18px" height="18px"> Indications
                     (optional)</label>

@@ -5,13 +5,25 @@ loadHeaderFooter();
 document.getElementById('entryForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
+    // Get form elements
+    const dateInput = document.getElementById('date');
+    const yearsInput = document.getElementById('years2');
+    const monthsInput = document.getElementById('months2');
+    const pediatricianInput = document.getElementById('pediatricianName');
+
+    // Validate required fields
+    if (!dateInput.value || !yearsInput.value || !monthsInput.value || !pediatricianInput.value) {
+        alert('Please fill in all required fields');
+        return; // Stop processing if validation fails
+    }
+
     // Get entry form data
     const formData = {
-        date: document.getElementById('date').value,
+        date: dateInput.value,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        years2: document.getElementById('years2').value,
-        months2: document.getElementById('months2').value,
-        pediatricianName: document.getElementById('pediatricianName').value,
+        years2: yearsInput.value,
+        months2: monthsInput.value,
+        pediatricianName: pediatricianInput.value,
         indications: document.getElementById('indications').value
     };
 
@@ -74,9 +86,11 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
 
     document.getElementById('card-container').appendChild(card);
 
-    // Show the card container after adding a new entry
+    // Ensure card container is visible (in case it was hidden)
     document.getElementById('card-container').classList.add('show');
 
+    // Scroll smoothly to the new card
+    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     document.getElementById('date').value = '';
     document.getElementById('years2').value = '';
     document.getElementById('months2').value = '';
@@ -91,15 +105,15 @@ let visitRecords = storedData ? JSON.parse(storedData) : []; // Initialize visit
 if (storedData) {
 
     // Show container when entry added
-    const addButton = document.getElementById('add');
+    // Show/hide card container based on whether there are entries
     const cardContainer = document.getElementById('card-container');
-
-    addButton.addEventListener('click', () => {
-        cardContainer.classList.toggle('show');
-    });
+    if (visitRecords.length > 0) {
+        cardContainer.classList.add('show');
+    } else {
+        cardContainer.classList.remove('show');
+    }
 
     visitRecords.forEach((entry) => {
-        cardContainer.classList.add('show');
         const card = document.createElement('div');
         card.className = 'card-entry';
 

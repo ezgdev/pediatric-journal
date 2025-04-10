@@ -1,7 +1,6 @@
 const CLIENT_ID = "703078067307-qm6g9kd3b3fh2h3p5brg9d96ricjm0h0.apps.googleusercontent.com";
 const API_KEY = "AIzaSyCjxu-qVeKCV4eITOeVTnA2nTRQElV3aKw";
 const SCOPES = "https://www.googleapis.com/auth/calendar.events";
-;
 
 let tokenClient;
 let gapiLoaded = false;
@@ -64,7 +63,6 @@ async function handleClientLoad() {
     }
 }
 
-
 // Authenticate the user
 window.authenticate = function () {
     if (!gapiLoaded || !tokenClient) {
@@ -89,14 +87,26 @@ window.signOut = function () {
 
 // Update the interface according to the session state
 function updateSigninStatus(isSignedIn) {
-    document.getElementById("loginButton").style.display = isSignedIn ? "none" : "block";
-    document.getElementById("logoutButton").style.display = isSignedIn ? "block" : "none";
+    document.getElementById("loginButton").style.display = isSignedIn ? "none" : "flex";
+    document.getElementById("logoutButton").style.display = isSignedIn ? "flex" : "none";
 }
 
 // Add an event to the calendar
+function showModal(message) {
+    const modal = document.getElementById('notification-modal');
+    const messageEl = document.getElementById('modal-message');
+
+    messageEl.textContent = message;
+    modal.style.display = 'block';
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 1500);
+}
+
 window.addEvent = function () {
     if (!accessToken) {
-        alert("Sign in to add events.");
+        showModal("Please Sign In to add events to your calendar");
         return;
     }
 
@@ -104,7 +114,7 @@ window.addEvent = function () {
     const eventDate = document.getElementById("eventDate")?.value;
 
     if (!eventTitle || !eventDate) {
-        alert("Please complete all fields.");
+        showModal("Please complete all fields");
         return;
     }
 
@@ -122,7 +132,7 @@ window.addEvent = function () {
         calendarId: "primary",
         resource: event
     }).then(response => {
-        alert("Event added to Google Calendar");
+        showModal("Event added to calendar successfully!");
         document.getElementById("eventTitle").value = "";
         document.getElementById("eventDate").value = "";
         console.log("Event created:", response);
@@ -132,4 +142,5 @@ window.addEvent = function () {
 }
 
 // Load the API on page load
+window.onload = handleClientLoad;
 window.onload = handleClientLoad;

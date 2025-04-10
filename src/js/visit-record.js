@@ -11,8 +11,7 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         years2: document.getElementById('years2').value,
         months2: document.getElementById('months2').value,
-        weight2: document.getElementById('weight2').value,
-        height2: document.getElementById('height2').value,
+        pediatricianName: document.getElementById('pediatricianName').value,
         indications: document.getElementById('indications').value
     };
 
@@ -39,13 +38,12 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
     }
 
     const cardText = `
-        <p><strong>Date:</strong> ${formatDate(formData.date)}, ${formData.time} hs</p>
-        <p><strong>Age:</strong> ${formData.years2} years and ${formData.months2} months</p>
-        <p><strong>Weight:</strong> ${formData.weight2} kg</p>
-        <p><strong>Height:</strong> ${formData.height2} cm</p>
-        <p><strong>Indications:</strong> ${formData.indications}</p>
+        <p><img src="images/calendar.png" alt="google ico" width="18px" height="18px"> ${formatDate(formData.date)}, ${formData.time} hs</p>
+        <p><img src="images/baby.png" alt="google ico" width="18px" height="18px"> ${formData.years2} years and ${formData.months2} months</p>
+        <p><img src="images/pediatrician.png" alt="google ico" width="20px" height="20px"> ${formData.pediatricianName}</p>
+        <p><img src="images/notes.png" alt="google ico" width="18px" height="18px"> ${formData.indications}</p>
         `;
-    
+
     cardContent.innerHTML = cardText;
 
     const deleteButton = document.createElement('button');
@@ -54,15 +52,14 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
 
     deleteButton.addEventListener('click', () => {
         card.remove();
-        
+
         // Remove the entry from local storage
         const index = visitRecords.findIndex((e) => {
             return (
                 e.date === formData.date &&
                 e.years2 === formData.years2 &&
                 e.months2 === formData.months2 &&
-                e.weight2 === formData.weight2 &&
-                e.height2 === formData.height2 &&
+                e.pediatricianName === formData.pediatricianName &&
                 e.indications === formData.indications
             );
         });
@@ -83,8 +80,7 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
     document.getElementById('date').value = '';
     document.getElementById('years2').value = '';
     document.getElementById('months2').value = '';
-    document.getElementById('weight2').value = '';
-    document.getElementById('height2').value = '';
+    document.getElementById('pediatricianName').value = '';
     document.getElementById('indications').value = '';
 });
 
@@ -111,11 +107,10 @@ if (storedData) {
         cardContent.className = 'card-content';
 
         const cardText = `
-        <p><strong>Date:</strong> ${entry.date}, ${entry.time} hs</p>
-        <p><strong>Age:</strong> ${entry.years2} years and ${entry.months2} months</p>
-        <p><strong>Weight:</strong> ${entry.weight2} kg</p>
-        <p><strong>Height:</strong> ${entry.height2} cm</p>
-        <p><strong>Indications:</strong> ${entry.indications}</p>
+        <p><img src="images/calendar.png" alt="google ico" width="18px" height="18px"> ${entry.date}, ${entry.time} hs</p>
+        <p><img src="images/baby.png" alt="google ico" width="18px" height="18px"> ${entry.years2} years and ${entry.months2} months</p>
+        <p><img src="images/pediatrician.png" alt="google ico" width="20px" height="20px"> ${entry.pediatricianName}</p>
+        <p><img src="images/notes.png" alt="google ico" width="18px" height="18px"> ${entry.indications}</p>
         `;
 
         cardContent.innerHTML = cardText;
@@ -135,8 +130,7 @@ if (storedData) {
                     e.date === entry.date &&
                     e.years2 === entry.years2 &&
                     e.months2 === entry.months2 &&
-                    e.weight2 === entry.weight2 &&
-                    e.height2 === entry.height2 &&
+                    e.pediatricianName === entry.pediatricianName &&
                     e.indications === entry.indications
                 );
             });

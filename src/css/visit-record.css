@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('base.css');
 
-header{
+header {
     background-color: var(--accent1-color);
 }
 
@@ -29,28 +29,28 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    max-width: 380px;
+    width: 85%;
+    margin: 0 auto;
     height: auto;
     text-align: center;
-    margin: 0 auto;
-    padding: 20px 20px 0px 20px ;
+    padding: 20px 20px 0px 20px;
 }
 
 .card h2 {
     margin-top: 0;
     font-family: var(--heading-font);
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 600;
 }
 
 .card p {
     color: #000;
-    font-size: 20px;
+    font-size: 18px;
     font-family: var(--paragraph-font);
 }
 
 .card img {
-    width: 180px;
+    width: 100px;
     height: auto;
 }
 
@@ -59,10 +59,58 @@ main {
     row-gap: 10px;
 }
 
+#reminderForm {
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    margin: 25px auto;
+    padding: 20px;
+}
+
+#reminderForm h2 {
+    font-family: var(--heading-font);
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#loginButton,
+#logoutButton,
+#addCalendar {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    column-gap: 10px;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: var(--paragraph-font);
+    font-weight: 600;
+    padding: 10px 10px;
+}
+
+#reminderForm label {
+    font-size: 15px;
+    font-family: var(--paragraph-font);
+}
+
+#eventTitle,
+#eventDate {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    border: none;
+}
+
 .log-container {
     display: grid;
     grid-template-columns: 1fr;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     width: 100%;
     margin: 0 auto;
 }
@@ -79,9 +127,8 @@ main {
     display: block;
     padding-bottom: 5px;
     font-family: var(--paragraph-font);
-    font-size: 13px;
-    text-transform: uppercase;
-    font-weight: 600;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .log-container input {
@@ -124,14 +171,14 @@ input:valid {
 
 #add:hover {
     background-color: var(--accent1-color);
-    
+
     transition: background-color 0.4s ease;
     cursor: pointer;
 }
 
 input {
     font-family: var(--paragraph-font);
-    padding-left: 5px; 
+    padding-left: 5px;
 }
 
 input::placeholder {
@@ -154,7 +201,7 @@ textarea::placeholder {
 #card-container {
     background-color: var(--secondary-color);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     padding: 20px;
     column-gap: 10px;
     row-gap: 10px;
@@ -184,17 +231,15 @@ textarea::placeholder {
     background-color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
     border-radius: 8px;
     max-width: 100%;
     height: auto;
-    text-align: center;
     margin: 0 auto;
-    padding: 20px ;
+    padding: 10px;
     font-family: var(--paragraph-font);
     font-weight: 400;
-    row-gap: 10px;
+    row-gap: 8px;
 }
 
 .card-content p {
@@ -202,19 +247,69 @@ textarea::placeholder {
 }
 
 .delete-button {
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: var(--secondary-color);
-    padding: 5px 10px;
+    padding: 5px;
     border: none;
     color: black;
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 12px;
     font-family: var(--paragraph-font);
     font-weight: 600;
+    cursor: pointer;
+    width: 10%;
+    text-align: center;
 }
 
 .delete-button:hover {
     color: white;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 18px;
+    z-index: 1000;
+    animation: fadeIn 0.3s, fadeOut 0.3s 1.2s;
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-icon {
+    font-size: 24px;
+    color: #4CAF50;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -243,7 +338,7 @@ textarea::placeholder {
 
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1920px){
+@media screen and (min-width: 1024px) and (max-width: 1920px) {
 
     .navigation {
         background-color: var(--accent1-color);
@@ -277,7 +372,7 @@ textarea::placeholder {
         width: 150px;
         height: auto;
     }
-    
+
     .log-container {
         grid-column: 4/5;
         padding-right: 50px;
@@ -297,11 +392,11 @@ textarea::placeholder {
 
     .card-content {
         max-width: 96%;
-        padding: 15px ;
+        padding: 15px;
         font-size: 20px;
         row-gap: 5px;
     }
-    
+
 
     .banner img {
         display: block;

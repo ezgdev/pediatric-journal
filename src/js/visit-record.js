@@ -66,7 +66,8 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
         card.remove();
 
         // Remove the entry from local storage
-        const index = visitRecords.findIndex((e) => {
+        const currentRecords = JSON.parse(localStorage.getItem('visitRecords')) || [];
+        const index = currentRecords.findIndex((e) => {
             return (
                 e.date === formData.date &&
                 e.years2 === formData.years2 &&
@@ -76,8 +77,8 @@ document.getElementById('entryForm').addEventListener('submit', function (event)
             );
         });
         if (index !== -1) {
-            visitRecords.splice(index, 1);
-            localStorage.setItem('visitRecords', JSON.stringify(visitRecords));
+            currentRecords.splice(index, 1);
+            localStorage.setItem('visitRecords', JSON.stringify(currentRecords));
         }
     });
 
@@ -139,7 +140,8 @@ if (storedData) {
             card.remove();
 
             // Remove the entry from local storage
-            const index = visitRecords.findIndex((e) => {
+            const currentRecords = JSON.parse(localStorage.getItem('visitRecords')) || [];
+            const index = currentRecords.findIndex((e) => {
                 return (
                     e.date === entry.date &&
                     e.years2 === entry.years2 &&
@@ -149,8 +151,8 @@ if (storedData) {
                 );
             });
             if (index !== -1) {
-                visitRecords.splice(index, 1);
-                localStorage.setItem('visitRecords', JSON.stringify(visitRecords)); // Update local storage
+                currentRecords.splice(index, 1);
+                localStorage.setItem('visitRecords', JSON.stringify(currentRecords));
             }
         });
 

@@ -14,14 +14,11 @@
 <body>
     <header id="main-header"></header>
     <main>
-        <!-- <div class="banner">
-            <img src="images/health.webp" alt="health information" loading="lazy">
-        </div> -->
 
         <div class="container-diseases">
             <h1 class="title">Child Diseases Info</h1>
 
-            <label for="diseaseSelect">Common Childhood Diseases:</label>
+            <label for="diseaseSelect">Find information about common Childhood Diseases</label>
 
             <select id="diseaseSelect">
                 <option value="">--Select a disease--</option>
@@ -47,6 +44,15 @@
 
             <div id="result" class="card"></div>
         </div>
+
+        <div class="footImg">
+            <picture>
+                <source srcset="images/diseases2.webp" media="(min-width: 1024px)">
+                <source srcset="images/diseases2.webp" media="(min-width: 768px)">
+                <img src="images/diseases.webp" alt="banner" loading="lazy">
+            </picture>
+        </div>
+
     </main>
 
     <footer id="main-footer"></footer>

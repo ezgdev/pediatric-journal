@@ -165,7 +165,7 @@ h3 {
     main {
         display: grid;
         grid-template-columns: 2fr 1fr;
-        grid-template-rows: 1fr 0.1fr;
+        grid-template-rows: 1fr 0.11fr;
         height: auto;
         overflow: hidden;
         background-color: var(--accent1-color);

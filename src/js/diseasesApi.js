@@ -23,7 +23,7 @@ getInfoBtn.addEventListener('click', () => {
     const query = select.value === 'other' ? customInput.value.trim() : select.value;
 
     if (!query) {
-        resultContainer.innerHTML = '<p>Please select or enter a disease name.</p>';
+        resultContainer.innerHTML = '<p class="errorInfo">Please select or enter a disease name.</p>';
         return;
     }
 
@@ -32,7 +32,7 @@ getInfoBtn.addEventListener('click', () => {
         .then(data => {
             const resultados = data.items;
             if (!resultados || resultados.length === 0) {
-                resultContainer.innerHTML = '<p>No results found.</p>';
+                resultContainer.innerHTML = '<p class="errorInfo">No results found.</p>';
                 return;
             }
 
@@ -47,6 +47,6 @@ getInfoBtn.addEventListener('click', () => {
         })
         .catch(err => {
             console.error(err);
-            resultContainer.innerHTML = '<p>Error retrieving disease information.</p>';
+            resultContainer.innerHTML = '<p class="errorInfo">Error retrieving disease information.</p>';
         });
 });

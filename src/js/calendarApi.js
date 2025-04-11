@@ -78,7 +78,6 @@ window.authenticate = function () {
 window.signOut = function () {
     if (accessToken) {
         google.accounts.oauth2.revoke(accessToken, () => {
-            console.log("Sesión cerrada");
             accessToken = null;
             localStorage.removeItem("isLoggedIn");
             updateSigninStatus(false);
@@ -140,7 +139,6 @@ window.addEvent = function () {
         showModal("Event added to calendar successfully!");
         document.getElementById("eventTitle").value = "";
         document.getElementById("eventDate").value = "";
-        console.log("Event created:", response);
     }).catch(error => {
         console.error("Error adding event:", error);
     });

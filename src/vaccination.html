@@ -15,11 +15,14 @@
     <header id="main-header"></header>
     <main>
         <div class="banner">
-            <img src="images/vaccination.webp" alt="vaccination schedule" loading="lazy">
+            <picture>
+                <source srcset="images/vaccination2.webp" media="(min-width: 1024px)">
+                <source srcset="images/vaccination2.webp" media="(min-width: 768px)">
+                <img src="images/vaccination1.webp" alt="banner" loading="lazy">
+            </picture>
         </div>
 
         <div class="filter-cards-container">
-            <h2 class="title">Select the period</h2>
             <section>
                 <div class="filter-card" data-period="0">
                     <img src="images/baby-stroller.webp" alt="baby stroller" loading="lazy">

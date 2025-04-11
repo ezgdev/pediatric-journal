@@ -49,6 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Add the 'active' class to the clicked filter card
             filterCard.classList.add('active');
+
+            // Smooth scroll to vaccines after allowing time for DOM updates
+            setTimeout(() => {
+                vaccinesContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 50);
         });
     });
 

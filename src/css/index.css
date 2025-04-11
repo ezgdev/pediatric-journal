@@ -177,7 +177,7 @@ input::placeholder {
     .banner h1 {
         display: block;
         position: absolute;
-        top: 35%;
+        top: 25%;
         left: 60%;
         color: white;
         font-size: 40px;

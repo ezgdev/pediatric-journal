@@ -25,23 +25,24 @@ export async function loadHeaderFooter() {
     addFooterContent();
 }
 
-// initializes the menu toggle functionality
+// initializes the menu toggle functionality for mobile view
 export function initializeMenuToggle() {
     const hamButton = document.querySelector('#menu');
     const navigation = document.querySelector('.navigation');
 
+    // adds event listener to the hamburger button
     hamButton.addEventListener('click', () => {
         navigation.classList.toggle('open');
         hamButton.classList.toggle('open');
     });
 }
 
-// adds the current year to the footer
-export function addFooterContent() {
-    const year = new Date().getFullYear();
-    const copyrightText = `&copy; ${year} Ezequiel Gimenez - Rosario, Argentina.`;
-    const footerElement = document.getElementById('main-footer');
-    footerElement.innerHTML = copyrightText;
+// loads the home section and adds event listener to the start button
+export function loadHomeSection() {
+    document.getElementById("startBtn").addEventListener("click", function () {
+        document.getElementById("home-section").style.display = "none";
+        document.getElementById("form-section").style.display = "block";
+    });
 }
 
 // handles the form submission and saves data to local storage
@@ -68,10 +69,10 @@ export function handleFormSubmission() {
     });
 }
 
-
-export function loadHomeSection() {
-    document.getElementById("startBtn").addEventListener("click", function () {
-        document.getElementById("home-section").style.display = "none";
-        document.getElementById("form-section").style.display = "block";
-    });
+// adds the current year to the footer
+export function addFooterContent() {
+    const year = new Date().getFullYear();
+    const copyrightText = `&copy; ${year} Ezequiel Gimenez - Rosario, Argentina.`;
+    const footerElement = document.getElementById('main-footer');
+    footerElement.innerHTML = copyrightText;
 }

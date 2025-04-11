@@ -2,6 +2,8 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
+// Add event listener to the form submission
+// to prevent default behavior and handle the form submission
 document.getElementById('entryForm').addEventListener('submit', function (event) {
     event.preventDefault();
 

@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Triple Bacterial', period: '11', dose: '2nd dose', description: 'Diphtheria + Tetanus + Acellular Pertussis' },
     ];
 
+    // Hide the vaccines container and header initially
     periodCards.forEach(filterCard => {
         filterCard.addEventListener('click', () => {
             const selectedPeriod = filterCard.getAttribute('data-period');

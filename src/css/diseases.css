@@ -84,10 +84,12 @@
 .result-card h3 {
     margin: 0 0 0.5rem 0;
     color: #007acc;
+    font-family: var(--text-font);
 }
 
 .result-card p {
     margin: 0;
+    font-family: var(--text-font);
 }
 
 .footImg img {
@@ -154,7 +156,17 @@
         padding: 20px;
     }
 
+    .result-card:hover {
+        background-color: var(--accent2-color);
+        cursor: pointer;
+    }
+
     #main-footer {
         margin-top: 10px;
+    }
+
+    #getInfoBtn:hover {
+        cursor: pointer;
+        background-color: var(--accent2-color);
     }
 }

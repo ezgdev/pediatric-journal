@@ -1,3 +1,4 @@
+// Google Calendar API integration
 const CLIENT_ID = "703078067307-qm6g9kd3b3fh2h3p5brg9d96ricjm0h0.apps.googleusercontent.com";
 const API_KEY = "AIzaSyCjxu-qVeKCV4eITOeVTnA2nTRQElV3aKw";
 const SCOPES = "https://www.googleapis.com/auth/calendar.events";
@@ -46,8 +47,8 @@ function initializeAuth() {
 // Handle the loading of the Google API client and authentication
 async function handleClientLoad() {
     try {
-        await loadGapiClient();  // We wait for the API to load completely
-        initializeAuth(); // We initialize authentication only after the API has loaded
+        await loadGapiClient();  // Wait for the API to load completely
+        initializeAuth(); // Initialize authentication only after the API has loaded
 
         const savedToken = localStorage.getItem("accessToken");
         const wasLoggedIn = localStorage.getItem("isLoggedIn") === "true";
@@ -104,12 +105,13 @@ function showModal(message) {
     }, 1500);
 }
 
+// Add an event to the calendar
 window.addEvent = function () {
     if (!accessToken) {
         showModal("Please Sign In to add events to your calendar");
         return;
     }
-
+    // Check if the user is logged in
     const eventTitle = document.getElementById("eventTitle")?.value.trim();
     const eventDate = document.getElementById("eventDate")?.value;
 
@@ -118,16 +120,19 @@ window.addEvent = function () {
         return;
     }
 
+    // Validate the date format (YYYY-MM-DD)
     const event = {
         summary: eventTitle,
         start: { dateTime: new Date(eventDate).toISOString(), timeZone: "America/Argentina/Buenos_Aires" },
         end: { dateTime: new Date(new Date(eventDate).getTime() + 60 * 60 * 1000).toISOString(), timeZone: "America/Argentina/Buenos_Aires" }
     };
 
+    // Set the time zone to the user's local time zone
     const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     event.start.timeZone = userTimeZone;
     event.end.timeZone = userTimeZone;
 
+    // Set the event start and end times
     gapi.client.calendar.events.insert({
         calendarId: "primary",
         resource: event

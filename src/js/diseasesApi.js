@@ -2,6 +2,7 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
+// This is the API key and Custom Search Engine ID for Google Custom Search API
 const API_KEY = 'AIzaSyDAa_w9vNxzPwNKIfkfoszEyaQeQnCjVqE';
 const CX = 'f733c27ef05d141e5';
 
@@ -11,6 +12,7 @@ const customInput = document.getElementById('customDiseaseInput');
 const getInfoBtn = document.getElementById('getInfoBtn');
 const resultContainer = document.getElementById('result');
 
+// Show the custom input field when "Other" is selected
 select.addEventListener('change', () => {
     if (select.value === 'other') {
         customInputDiv.style.display = 'block';
@@ -34,6 +36,7 @@ getInfoBtn.addEventListener('click', () => {
 
     resultContainer.style.display = 'grid'; // Show the result container when fetching data
 
+    // Fetch data from the Google Custom Search API
     fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${CX}&key=${API_KEY}`)
         .then(res => res.json())
         .then(data => {
@@ -42,7 +45,7 @@ getInfoBtn.addEventListener('click', () => {
                 resultContainer.innerHTML = '<p class="errorInfo">No results found.</p>';
                 return;
             }
-
+            // Hide the result container if no results are found
             const html = resultados.map(r => `
             <div class="result-card">
             <h3><a href="${r.link}" target="_blank">${r.title}</a></h3>
@@ -51,6 +54,14 @@ getInfoBtn.addEventListener('click', () => {
         `).join('');
 
             resultContainer.innerHTML = html;
+
+            // Smooth scroll to result after allowing time for DOM updates
+            setTimeout(() => {
+                resultContainer.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 50);
         })
         .catch(err => {
             console.error(err);

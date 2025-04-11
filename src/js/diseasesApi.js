@@ -19,13 +19,20 @@ select.addEventListener('change', () => {
     }
 });
 
+// Hide the result container initially
+resultContainer.style.display = 'none';
+
+// Modify the click event listener to show the result container only when needed
 getInfoBtn.addEventListener('click', () => {
     const query = select.value === 'other' ? customInput.value.trim() : select.value;
 
     if (!query) {
+        resultContainer.style.display = 'block';
         resultContainer.innerHTML = '<p class="errorInfo">Please select or enter a disease name.</p>';
         return;
     }
+
+    resultContainer.style.display = 'grid'; // Show the result container when fetching data
 
     fetch(`https://www.googleapis.com/customsearch/v1?q=${query}&cx=${CX}&key=${API_KEY}`)
         .then(res => res.json())

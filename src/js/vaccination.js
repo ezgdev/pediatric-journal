@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load vaccines data from JSON file
     let vaccines = [];
     try {
-        const response = await fetch('/data/vaccines.json');
+        const response = await fetch('data/vaccines.json');
         if (!response.ok) {
             throw new Error('Failed to load vaccines data');
         }

@@ -1,10 +1,19 @@
 import { resolve } from "path";
-const { defineConfig } = require("vite");
+import { defineConfig } from "vite";
 
 export default defineConfig({
   root: 'src',
+  publicDir: '../public',
+  server: {
+    port: 3000,
+    host: true,
+    strictPort: true,
+    open: '/index.html',
+    hmr: true
+  },
   build: {
     outDir: '../dist',
+    emptyOutDir: true,
     rollupOptions: {
       input: {
         main: resolve(__dirname, "src/index.html"),
@@ -14,8 +23,9 @@ export default defineConfig({
       },
     },
   },
-  server: {
+  preview: {
     port: 3000,
+    host: true
   },
-  base: './',
+  base: '/'
 });
